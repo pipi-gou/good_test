@@ -291,22 +291,41 @@ var swiperRender = (function () {
                     transitionEnd: function () {
                         var slidesAry = this.slides,
                             activeIndex = this.activeIndex;
-                        console.log(activeIndex);
-                        if (activeIndex === 2){
-                        var ap3 = new APlayer({
-                            element: document.getElementById('player3'),//样式1
-                            narrow: false,
-                            autoplay: false,
-                            showlrc: true,
-                            music: {
-                                title: '无赖',
-                                author: '郑中基',
-                                url: './css/aa3.mp3',
-                                pic: 'http://p2.music.126.net/2vFBKWUmF_jiWGaBgO6RaA==/17648261137761966.jpg?imageView&thumbnail=360y360&quality=75&tostatic=0'
+
+                            const ap = new APlayer({
+                                container: document.getElementById('player3'),
+                                listFolded: false,
+                                listMaxHeight: 90,
+                                lrcType: 3,
+                                audio: [{
+                                    name: 'The Spectre',
+                                    artist: 'Alan Walker',
+                                    url: './css/Alan.mp3',
+                                    cover: 'http://imge.kugou.com/stdmusic/20170914/20170914225307625638.jpg',
+                                    lrc: './css/Alan.lrc'
+                                },
+                                    {
+                                        name: '无赖',
+                                        artist: '郑中基',
+                                        url: './css/wulai.mp3',
+                                        cover: 'http://imge.kugou.com/stdmusic/20121126/20121126111607332421.jpg',
+                                        lrc: './css/wulai.lrc',
+                                        theme: '#46718b'
+                                    },
+                                    {
+                                        name: '英雄',
+                                        artist: 'Doa',
+                                        url: './css/Doa.mp3',
+                                        cover: 'http://imge.kugou.com/stdmusic/20150718/20150718110058454646.jpg',
+                                        lrc: './css/doa.lrc',
+                                        theme: '#46718b'
+                                    }
+                            ],
+                            });
+                            if(activeIndex!==2){
+
                             }
-                        });
-                        ap3.init();
-                        }
+
                         $.each(slidesAry, function (index, item) {
                             if (index === activeIndex) {
                                 item.id = 'page' + (activeIndex + 1);
@@ -317,7 +336,7 @@ var swiperRender = (function () {
                         swiperAnimate(this);
 
 
-                        console.log(this.slides);
+
                         // alert('过渡结束');
                     },
                     init:function () {

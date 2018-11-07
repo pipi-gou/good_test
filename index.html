@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./css/index.css">
     <link href="https://cdn.bootcss.com/Swiper/4.4.2/css/swiper.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
-    <link rel="stylesheet" href="./css/APlayer.min.css">
+    <link rel="stylesheet" href="./node_modules/aplayer/dist/APlayer.min.css">
     <link rel="stylesheet" href="./css/myanimate.css">
 
     <link href="https://cdn.bootcss.com/Swiper/4.4.2/css/swiper.css" rel="stylesheet">
@@ -216,54 +216,6 @@
                     <div class="demo">
                         <p><strong>MY MUSIC</strong></p>
                         <div id="player3" class="aplayer">
-            <pre class="aplayer-lrc-content">
-                [00:00.00]无赖
-[00:00.08]演唱：郑中基
-[00:13.05]我间中饮醉酒 很喜欢自由
-[00:20.23]常犯错爱说谎 但总会内疚
-[00:24.59]遇过很多的损友 学到贪新厌旧
-[00:29.14]亦欠过很多女人
-[00:32.17]怕结婚 只会守 三分钟诺言
-[00:37.48]曾话过 要戒烟 但讲了就算
-[00:41.70]梦与想丢低很远 但对返工厌倦
-[00:47.19]自小不会打算
-[00:50.79]但是仍惟独你爱我这废人
-[00:55.19]出错你都肯去忍
-[00:59.26]然而谁亦早知不会合衬
-[01:03.97]偏偏你愿意等
-[01:06.49]为何还喜欢我 我这种无赖
-[01:11.13]是话你蠢还是很伟大
-[01:16.49]在座每位都将我踩 口碑有多坏
-[01:20.78]但你亦永远不见怪
-[01:25.79]何必跟我 我这种无赖
-[01:28.59]活大半生还是很失败
-[01:32.70]但是你死都不变心 跟我笑著挨
-[01:38.13]就算坏我也不忍心 偷偷作怪
-[01:57.74]没有根的野草 飘忽的命途
-[02:08.60]谁像你当我宝 什么也做到
-[02:13.00]旧爱数足一匹布 在这刻写句号
-[02:18.10]只想跟你终老
-[02:21.79]在地球惟独你爱我这废人
-[02:27.39]出错你都肯去忍
-[02:30.10]然而谁亦早知不会合衬
-[02:35.70]偏偏你愿意等
-[02:38.67]为何还喜欢我 我这种无赖
-[02:43.69]是话你蠢还是很伟大
-[02:47.14]在座每位都将我踩 口碑有多坏
-[02:53.10]但你亦永远不见怪
-[02:56.09]何必跟我 我这种无赖
-[03:00.99]活大半生还是很失败
-[03:05.30]但是你死都不变心 跟我笑著挨
-[03:10.19]就算坏我也不忍心
-[03:13.22]还喜欢我 我这种无赖
-[03:17.71]是话你蠢还是很伟大
-[03:22.99]在座每位都将我踩 口碑有多坏
-[03:26.97]但你亦永远不见怪
-[03:30.62]何必跟我 我这种无赖
-[03:35.24]活大半生还是很失败
-[03:40.69]但是你死都不变心 跟我拼命挨
-[03:45.01]换转别个也不忍心 偷偷作怪
-            </pre>
                         </div>
                     </div>
                 </div>
@@ -331,9 +283,28 @@
 </section>
     <script src="https://cdn.bootcss.com/zepto/1.0rc1/zepto.min.js"></script>
     <script src="https://cdn.bootcss.com/Swiper/4.4.2/js/swiper.js"></script>
-<script src="js/APlayer.min.js"></script>
+<script src="node_modules/aplayer/dist/APlayer.min.js"></script>
 <script src="js/swiper.animate1.0.3.min.js"></script>
     <script charset="utf-8" type="text/javascript" src="js/makisu.min.js"></script>
 <script type="text/javascript" src="./js/index.js"></script>
+<script>
+    document.addEventListener('touchstart', function () {
+        function audioAutoPlay() {
+            var audio = document.getElementById('audio');
+            audio.play();
+        }
+        audioAutoPlay();
+    });
+    document.addEventListener('DOMContentLoaded', function () {
+        function audioAutoPlay() {
+            var audio = document.getElementById('audio');
+            audio.play();
+            document.addEventListener("WeixinJSBridgeReady", function () {
+                audio.play();
+            }, false);
+        }
+        audioAutoPlay();
+    });
+</script>
 </body>
 </html>
