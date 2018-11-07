@@ -290,14 +290,14 @@
 <script>
     document.addEventListener('touchstart', function () {
         function audioAutoPlay() {
-            var audio = document.getElementById('audio');
+            var audio = document.getElementById('listenMusic');
             audio.play();
         }
         audioAutoPlay();
     });
     document.addEventListener('DOMContentLoaded', function () {
         function audioAutoPlay() {
-            var audio = document.getElementById('audio');
+            var audio = document.getElementById('listenMusic');
             audio.play();
             document.addEventListener("WeixinJSBridgeReady", function () {
                 audio.play();
