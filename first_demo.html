@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>first_demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <link href="https://cdn.bootcss.com/normalize/8.0.0/normalize.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/index.css">
+    <link href="https://cdn.bootcss.com/Swiper/4.4.2/css/swiper.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+    <link rel="stylesheet" href="./css/APlayer.min.css">
+    <link rel="stylesheet" href="./css/myanimate.css">
+
+    <link href="https://cdn.bootcss.com/Swiper/4.4.2/css/swiper.css" rel="stylesheet">
+
+    <script>
+        ;(function(designWidth, maxWidth) {
+            var doc = document,
+                win = window,
+                docEl = doc.documentElement,
+                remStyle = document.createElement("style"),
+                tid;
+
+            function refreshRem() {
+                var width = docEl.getBoundingClientRect().width;
+                maxWidth = maxWidth || 540;
+                width>maxWidth && (width=maxWidth);
+                var rem = width * 100 / designWidth;
+                remStyle.innerHTML = 'html{font-size:' + rem + 'px;}';
+            }
+
+            if (docEl.firstElementChild) {
+                docEl.firstElementChild.appendChild(remStyle);
+            } else {
+                var wrap = doc.createElement("div");
+                wrap.appendChild(remStyle);
+                doc.write(wrap.innerHTML);
+                wrap = null;
+            }
+            //要等 wiewport 设置好后才能执行 refreshRem，不然 refreshRem 会执行2次；
+            refreshRem();
+
+            win.addEventListener("resize", function() {
+                clearTimeout(tid); //防止执行两次
+                tid = setTimeout(refreshRem, 300);
+            }, false);
+
+            win.addEventListener("pageshow", function(e) {
+                if (e.persisted) { // 浏览器后退的时候重新计算
+                    clearTimeout(tid);
+                    tid = setTimeout(refreshRem, 300);
+                }
+            }, false);
+
+            if (doc.readyState === "complete") {
+                doc.body.style.fontSize = "16px";
+            } else {
+                doc.addEventListener("DOMContentLoaded", function(e) {
+                    doc.body.style.fontSize = "16px";
+                }, false);
+            }
+        })(640, 640);
+    </script>
+</head>
+<body>
+<section class="loading" id="loading">
+    <div class="con">
+        <h1>个人简历</h1>
+        <h3>我的第一份简历</h3>
+    </div>
+    <div class="progress">
+        <em id="progressbox"></em>
+    </div>
+</section>
+<section class="phone" id="phone">
+    <h2>
+        <img src="./img/zf_phoneLogo.png" alt="简历图片">
+
+    </h2>
+    <div class="time" id="time"></div>
+    <div class="listen" id="listen">
+        <div class="move" id="listenMove"></div>
+        <div class="touch" id="listenTouch"></div>
+    </div>
+    <div class="detail" id="detail">
+        <div class="touch" id="detailTouch"></div>
+    </div>
+    <audio src="./css/bell.mp3" preload="none" id="listenMusic" loop></audio>
+    <audio src="./css/Doa.mp3" preload="none" id="detailMusic"></audio>
+
+</section>
+<section class="message" id="message">
+    <ul class="messageList">
+        <li class="student">
+            哎,辞职了,还在找工作中
+            <em></em>
+            <img src="./img/zf_messageStudent.png" alt="头像">
+        </li>
+        <li class="teacher">
+            可以啊,你很帅啊
+            <em></em>
+            <img src="./img/zf_messageLogo.png" alt="头像">
+        </li>
+        <li class="teacher">
+            可以啊,你很帅啊
+            <em></em>
+            <img src="./img/zf_messageLogo.png" alt="头像">
+        </li>
+        <li class="student">
+            哎,辞职了,还在找工作中
+            <em></em>
+            <img src="./img/zf_messageStudent.png" alt="头像">
+        </li>
+        <li class="teacher">
+            可以啊,你很帅啊
+            <em></em>
+            <img src="./img/zf_messageLogo.png" alt="头像">
+        </li>
+        <li class="teacher">
+            可以啊,你很帅啊
+            <em></em>
+            <img src="./img/zf_messageLogo.png" alt="头像">
+        </li>
+        <li class="teacher">
+            可以啊,你很帅啊
+            <em></em>
+            <img src="./img/zf_messageLogo.png" alt="头像">
+        </li>
+        <li class="student">
+            哎,辞职了,还在找工作中
+            <em></em>
+            <img src="./img/zf_messageStudent.png" alt="头像">
+        </li>
+        <li class="student">
+            哎,辞职了,还在找工作中
+            <em></em>
+            <img src="./img/zf_messageStudent.png" alt="头像">
+        </li>
+        <li class="teacher">
+            可以啊,你很帅啊
+            <em></em>
+            <img src="./img/zf_messageLogo.png" alt="头像">
+        </li>
+        <li class="teacher">
+            可以啊,你很帅啊
+            <em></em>
+            <img src="./img/zf_messageLogo.png" alt="头像">
+        </li>
+        <li class="teacher">
+            可以啊,你很帅啊
+            <em></em>
+            <img src="./img/zf_messageLogo.png" alt="头像">
+        </li>
+
+
+    </ul>
+    <div class="keyBorder">
+        <span class="textTip">可以啊,你很帅啊</span>
+        <span class="submit"></span>
+    </div>
+    <audio src="./css/come.mp3" loop preload="none" id="messageMusic"></audio>
+</section>
+<section class="cube" id="cube">
+    <ul class="cubebox">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <div class="tip"></div>
+</section>
+<section class="swiper" id="swiper">
+    <div class="return"></div>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <!--课程大纲-->
+            <div class="swiper-slide page1">
+                <dl id="makisu">
+                    <dt>课程大纲</dt>
+                    <dd><em>01</em><a href="#">JavaScript核心基础部分</a></dd>
+                    <dd><em>02</em><a href="#">JavaScript基础实战部分</a></dd>
+                    <dd><em>03</em><a href="#">JavaScript核心原理</a></dd>
+                    <dd><em>04</em><a href="#">jQuery源码级课程:从原理到实战</a></dd>
+                    <dd><em>05</em><a href="#">设计模式和设计规范</a></dd>
+                    <dd><em>06</em><a href="#">基于Promise模式的AJAX库</a></dd>
+                    <dd><em>07</em><a href="#">模块化和组件开发实战</a></dd>
+                    <dd><em>08</em><a href="#">协同开发和项目管理</a></dd>
+                    <dd><em>09</em><a href="#">后台服务,HTTP协议和Ajax</a></dd>
+                    <dd><em>10</em><a href="#">BAT企业级webApp开发与实战</a></dd>
+                    <dd><em>11</em><a href="#">React/Angular/gulp/webpack</a></dd>
+                </dl>
+            </div>
+
+            <!--课程体系-->
+            <div class="swiper-slide page2">
+                <h2 class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">课程体系</h2>
+
+                <div class="box">
+                    <img src="img/zf_course.png" alt=""/>
+                    <img src="img/zf_course1.png" alt=""/>
+                    <img src="img/zf_course2.png" alt=""/>
+                    <img src="img/zf_course3.png" alt=""/>
+                    <img src="img/zf_course4.png" alt=""/>
+                    <img src="img/zf_course5.png" alt=""/>
+                    <img src="img/zf_course6.png" alt=""/>
+                </div>
+            </div>
+
+            <!--讲师介绍-->
+            <div class="swiper-slide page3">
+                <div id="header">
+                </div>
+                <div id="main">
+                    <div class="demo">
+                        <p><strong>MY MUSIC</strong></p>
+                        <div id="player3" class="aplayer">
+            <pre class="aplayer-lrc-content">
+                [00:00.00]无赖
+[00:00.08]演唱：郑中基
+[00:13.05]我间中饮醉酒 很喜欢自由
+[00:20.23]常犯错爱说谎 但总会内疚
+[00:24.59]遇过很多的损友 学到贪新厌旧
+[00:29.14]亦欠过很多女人
+[00:32.17]怕结婚 只会守 三分钟诺言
+[00:37.48]曾话过 要戒烟 但讲了就算
+[00:41.70]梦与想丢低很远 但对返工厌倦
+[00:47.19]自小不会打算
+[00:50.79]但是仍惟独你爱我这废人
+[00:55.19]出错你都肯去忍
+[00:59.26]然而谁亦早知不会合衬
+[01:03.97]偏偏你愿意等
+[01:06.49]为何还喜欢我 我这种无赖
+[01:11.13]是话你蠢还是很伟大
+[01:16.49]在座每位都将我踩 口碑有多坏
+[01:20.78]但你亦永远不见怪
+[01:25.79]何必跟我 我这种无赖
+[01:28.59]活大半生还是很失败
+[01:32.70]但是你死都不变心 跟我笑著挨
+[01:38.13]就算坏我也不忍心 偷偷作怪
+[01:57.74]没有根的野草 飘忽的命途
+[02:08.60]谁像你当我宝 什么也做到
+[02:13.00]旧爱数足一匹布 在这刻写句号
+[02:18.10]只想跟你终老
+[02:21.79]在地球惟独你爱我这废人
+[02:27.39]出错你都肯去忍
+[02:30.10]然而谁亦早知不会合衬
+[02:35.70]偏偏你愿意等
+[02:38.67]为何还喜欢我 我这种无赖
+[02:43.69]是话你蠢还是很伟大
+[02:47.14]在座每位都将我踩 口碑有多坏
+[02:53.10]但你亦永远不见怪
+[02:56.09]何必跟我 我这种无赖
+[03:00.99]活大半生还是很失败
+[03:05.30]但是你死都不变心 跟我笑著挨
+[03:10.19]就算坏我也不忍心
+[03:13.22]还喜欢我 我这种无赖
+[03:17.71]是话你蠢还是很伟大
+[03:22.99]在座每位都将我踩 口碑有多坏
+[03:26.97]但你亦永远不见怪
+[03:30.62]何必跟我 我这种无赖
+[03:35.24]活大半生还是很失败
+[03:40.69]但是你死都不变心 跟我拼命挨
+[03:45.01]换转别个也不忍心 偷偷作怪
+            </pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--就业信息-->
+            <div class="swiper-slide page4">
+                <p>
+                    没有招生部门<br/>
+                    但学生数量<span>每年翻倍</span>
+                </p>
+
+                <p>
+                    没有就业部分<br/>
+                    但学生的平均薪资<span>超过一万二</span>
+                </p>
+
+                <h2>就业信息</h2>
+
+                <div class="box">
+                    <img src="img/zf_emploment.png" alt=""/>
+                </div>
+            </div>
+
+            <!--风采展示-->
+            <div class="swiper-slide page5">
+                <img src="img/zf_style1.jpg"/>
+                <img src="img/zf_style2.jpg"/>
+                <img src="img/zf_style3.jpg"/>
+
+                <div class="tip">
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+
+            <!--联系我们-->
+            <div class="swiper-slide page6">
+                <h2>
+                    <span>联系我们</span>
+                    <span>concat us</span>
+                </h2>
+                <ul class="concat">
+                    <li>
+                        <div class="icon"></div>
+                        <div class="textCon">
+                            <span>QQ:</span>1144709265<br/>
+                            <span>TEL:</span>4001806960<br/>
+                            <span>手机:</span>15010063579
+                        </div>
+                    </li>
+                    <li>
+                        <div class="icon"></div>
+                        <div class="textCon">
+                            <span>学校地址:</span><br/>
+                            北京昌平区回龙观东大街3号楼02号东段珠峰培训
+                        </div>
+                    </li>
+                </ul>
+                <img src="img/zf_concatInfo.png"/>
+            </div>
+        </div>
+    </div>
+
+</section>
+    <script src="https://cdn.bootcss.com/zepto/1.0rc1/zepto.min.js"></script>
+    <script src="https://cdn.bootcss.com/Swiper/4.4.2/js/swiper.js"></script>
+<script src="js/APlayer.min.js"></script>
+<script src="js/swiper.animate1.0.3.min.js"></script>
+    <script charset="utf-8" type="text/javascript" src="js/makisu.min.js"></script>
+<script type="text/javascript" src="./js/index.js"></script>
+</body>
+</html>
