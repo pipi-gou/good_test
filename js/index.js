@@ -33,6 +33,7 @@ var loadingRender = (function(){
                             window.setTimeout(()=>{
                                 loading.style.display = 'none';
                                 phoneRender.init();
+                                document.getElementById('listenMusic').play();
                             },2000)
                       }
                   }
@@ -92,9 +93,12 @@ var phoneRender = (function(){
     return {
        init(){
            phone.style.display = 'block';
-           listenMusic.play();
+           // listenMusic.onload=function(){
+           //     listenMusic.play();
+           // };
+           // listenMusic.play();
            //移动端使用click会存在一个300ms的延迟,此时需要使用touchstart/touchmove/touchend/zepto中singelTap
-           $("#listenTouch").on('click',function () {
+           $("#listenTouch").singleTap(function () {
                listenMusic.pause();
                // listen.style.display='none';
                // detail.style.transform = 'translateY(0)';
@@ -104,7 +108,7 @@ var phoneRender = (function(){
 
                detailMusics();
            });
-           $("#detailTouch").on('click',function () {
+           $("#detailTouch").singleTap(function () {
                close();
            })
 
@@ -166,7 +170,7 @@ var messageRender = (function () {
           $keyTip.html(result);
           if (n===text.length-1){
               window.clearInterval(textTimer);
-              $submit.css('display','block').on('click',function () {
+              $submit.css('display','block').singleTap(function () {
                   result='';
                   $keyTip.html(result);
                   $keyBorder.css('transform','translateY(3.7rem)');
@@ -236,7 +240,7 @@ var cubeRender = (function () {
                 rotateX:-35,
                 rotateY:45
             }).on('touchstart',start).on('touchmove',move).on('touchend',end);
-            $cubeBoxlist.on('click',function () {
+            $cubeBoxlist.singleTap(function () {
                 var index = $(this).index();
                 $cube.css('display','none');
                 swiperRender.init(index);
@@ -351,7 +355,7 @@ var swiperRender = (function () {
             mySwiper.slideTo(index, 0);
 
             //->给返回按钮绑定单击事件
-            $return.on('click',function () {
+            $return.singleTap(function () {
                 $swiper.css('display', 'none');
                 $('#cube').css('display', 'block');
             });
